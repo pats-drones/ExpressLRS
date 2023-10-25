@@ -31,7 +31,7 @@
 #unlocks >250mw output power for R9M and Happy Model ES915TX (Fan mod suggested: https://github.com/AlessandroAU/ExpressLRS/wiki/R9M-Fan-Mod-Cover)
 #-DUNLOCK_HIGHER_POWER
 
--DLOCK_ON_FIRST_CONNECTION
+#-DLOCK_ON_FIRST_CONNECTION
 
 # For TX devices with fans, FAN_MIN_RUNTIME keeps the fan running even after the power level has
 # dropped below the configured Fan Threshold. This prevents the fan from turning on and off every
