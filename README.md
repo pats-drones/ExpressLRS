@@ -1,3 +1,12 @@
+## <img src="https://static.wixstatic.com/media/8176bc_57a555149f4c4db6a869e8dfeb05aff0~mv2.png" alt="PATS" width="100" height="30"> notes
+
+Use this repository to flash TX module. Flightcontrollers have SPI receivers; ELRS is included in Betaflight. Current (Oct 25th 2023) modified Betaflight firmware is [v4.4.2](https://github.com/pats-drones/betaflight/tree/pats_4.4.2)
+
+* Modify binding phrase in `user_defines.txt`
+* Easiest way to flash is to install Platformio IDE in VS Code, and use the project tasks for the relevant module, build and upload over UART (USB).
+
+---
+
 ![Banner](https://github.com/ExpressLRS/ExpressLRS-Hardware/blob/master/img/banner.png?raw=true)
 
 <center>
