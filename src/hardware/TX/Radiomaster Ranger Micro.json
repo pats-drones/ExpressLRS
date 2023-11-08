@@ -1,6 +1,6 @@
 {
-    "serial_rx": 13,
-    "serial_tx": 13,
+    "serial_rx": 3,
+    "serial_tx": 1,
     "radio_busy": 22,
     "radio_dio1": 21,
     "radio_miso": 19,
@@ -19,7 +19,7 @@
     "power_values": [-17,-15,-12,-7,-4,2],
     "led_rgb": 15,
     "led_rgb_isgrb": true,
-    "use_backpack": true,
+    "use_backpack": false,
     "debug_backpack_baud": 460800,
     "debug_backpack_rx": 16,
     "debug_backpack_tx": 17,
