@@ -278,7 +278,7 @@ void ICACHE_RAM_ATTR getRFlinkInfo()
 
         // BetaFlight/iNav expect positive values for -dBm (e.g. -80dBm -> sent as 80)
         CRSF::LinkStatistics.uplink_RSSI_1 = -rssiDBM;
-        CRSF::LinkStatistics.uplink_RSSI_2 = -rssiDBM2;
+        // CRSF::LinkStatistics.uplink_RSSI_2 = -rssiDBM2;
         antenna = (rssiDBM > rssiDBM2)? 0 : 1; // report a better antenna for the reception
     }
     else if (antenna == 0)
@@ -298,7 +298,7 @@ void ICACHE_RAM_ATTR getRFlinkInfo()
         if (rssiDBM > 0) rssiDBM = 0;
         // BetaFlight/iNav expect positive values for -dBm (e.g. -80dBm -> sent as 80)
         // May be overwritten below if DEBUG_BF_LINK_STATS is set
-        CRSF::LinkStatistics.uplink_RSSI_2 = -rssiDBM;
+        // CRSF::LinkStatistics.uplink_RSSI_2 = -rssiDBM;
     }
 
     serialIO->setLinkQualityStats(
@@ -317,7 +317,7 @@ void ICACHE_RAM_ATTR getRFlinkInfo()
     CRSF::LinkStatistics.downlink_RSSI = debug1;
     CRSF::LinkStatistics.downlink_Link_quality = debug2;
     CRSF::LinkStatistics.downlink_SNR = debug3;
-    CRSF::LinkStatistics.uplink_RSSI_2 = debug4;
+    // CRSF::LinkStatistics.uplink_RSSI_2 = debug4;
     #endif
 
     #if defined(DEBUG_RCVR_LINKSTATS)
@@ -414,7 +414,7 @@ void ICACHE_RAM_ATTR LinkStatsToOta(OTA_LinkStats_s * const ls)
     // and must be inverted on the TX side. Positive values are used
     // so save a bit to encode which antenna is in use
     ls->uplink_RSSI_1 = CRSF::LinkStatistics.uplink_RSSI_1;
-    ls->uplink_RSSI_2 = CRSF::LinkStatistics.uplink_RSSI_2;
+    // ls->uplink_RSSI_2 = CRSF::LinkStatistics.uplink_RSSI_2;
     ls->antenna = antenna;
     ls->modelMatch = connectionHasModelMatch;
     ls->lq = CRSF::LinkStatistics.uplink_Link_quality;
@@ -1527,7 +1527,7 @@ static void debugRcvrLinkstats()
         char buf[50];
         snprintf(buf, sizeof(buf), "%u,%u,-%u,%u,%d,%u,%u,%d\r\n",
             packetCounter, ls.active_antenna,
-            ls.active_antenna ? ls.uplink_RSSI_2 : ls.uplink_RSSI_1,
+            ls.uplink_RSSI_1,
             ls.uplink_Link_quality, ls.uplink_SNR,
             ls.uplink_TX_Power, fhss, pfd);
         Serial.write(buf);

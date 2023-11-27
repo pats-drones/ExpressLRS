@@ -61,7 +61,7 @@ void DynamicPower_Update(uint32_t now)
   bool newTlmAvail = snrScaled > DYNPOWER_UPDATE_MISSED;
   bool lastTlmMissed = snrScaled == DYNPOWER_UPDATE_MISSED;
 
-  int8_t rssi = (CRSF::LinkStatistics.active_antenna == 0) ? CRSF::LinkStatistics.uplink_RSSI_1 : CRSF::LinkStatistics.uplink_RSSI_2;
+  int8_t rssi = CRSF::LinkStatistics.uplink_RSSI_1;
 
   // power is too strong and saturate the RX LNA
   if (newTlmAvail && (rssi >= -5))

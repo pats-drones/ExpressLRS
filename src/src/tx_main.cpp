@@ -155,7 +155,7 @@ void ICACHE_RAM_ATTR LinkStatsFromOta(OTA_LinkStats_s * const ls)
   // RSSI received is signed, inverted polarity (positive value = -dBm)
   // OpenTX's value is signed and will display +dBm and -dBm properly
   crsf.LinkStatistics.uplink_RSSI_1 = -(ls->uplink_RSSI_1);
-  crsf.LinkStatistics.uplink_RSSI_2 = -(ls->uplink_RSSI_2);
+  crsf.LinkStatistics.bf_version = ls->bf_version;
   crsf.LinkStatistics.uplink_Link_quality = ls->lq;
 #if defined(DEBUG_FREQ_CORRECTION)
   // Don't descale the FreqCorrection value being send in SNR

@@ -332,7 +332,7 @@ typedef struct crsf_sensor_baro_vario_s
 typedef struct crsfPayloadLinkstatistics_s
 {
     uint8_t uplink_RSSI_1;
-    uint8_t uplink_RSSI_2;
+    uint8_t bf_version;
     uint8_t uplink_Link_quality;
     int8_t uplink_SNR;
     uint8_t active_antenna;
