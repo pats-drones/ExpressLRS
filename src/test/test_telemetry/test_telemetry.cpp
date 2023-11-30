@@ -65,6 +65,44 @@ void test_function_battery(void)
     }
 }
 
+void test_function_pats(void)
+{
+    telemetry.ResetState();
+    const uint8_t inbuffer[] = {CRSF_FRAMETYPE_PATS,0,0,0,0,0,0,0};
+    uint8_t crc = crsf_crc.calc(&inbuffer[0], 8, 0);
+    uint8_t patsSequence[] = {0xEC,9,CRSF_FRAMETYPE_PATS,0,0,0,0,0,0,0,crc};;
+    int length = sizeof(patsSequence);
+    int sentLength = sendData(patsSequence, length);
+    // TEST_ASSERT_EQUAL(length, sentLength);
+
+    uint8_t* data;
+    uint8_t receivedLength;
+    telemetry.GetNextPayload(&receivedLength, &data);
+    TEST_ASSERT_NOT_EQUAL(0, data);
+    for (int i = 0; i < length; i++)
+    {
+        TEST_ASSERT_EQUAL(patsSequence[i], data[i]);
+    }
+
+    // simulate sending done + send another message of the same type to make sure that the repeated sending of only one type works
+
+    // this unlocks the data but does not send it again since it's not updated
+    TEST_ASSERT_EQUAL(false, telemetry.GetNextPayload(&receivedLength, &data));
+
+    // // update data
+    // sentLength = sendData(batterySequence2, length);
+    // TEST_ASSERT_EQUAL(length, sentLength);
+
+    // // now it's ready to be sent
+    // telemetry.GetNextPayload(&receivedLength, &data);
+    // TEST_ASSERT_NOT_EQUAL(0, data);
+
+    // for (int i = 0; i < length; i++)
+    // {
+    //     TEST_ASSERT_EQUAL(batterySequence2[i], data[i]);
+    // }
+}
+
 void test_function_replace_old(void)
 {
     telemetry.ResetState();
@@ -253,6 +291,7 @@ int main(int argc, char **argv)
     RUN_TEST(test_function_store_unknown_type_two_slots);
     RUN_TEST(test_function_store_ardupilot_status_text);
     RUN_TEST(test_function_add_type_with_zero_crc);
+    RUN_TEST(test_function_pats);
     UNITY_END();
 
     return 0;

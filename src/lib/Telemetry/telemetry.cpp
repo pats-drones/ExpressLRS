@@ -62,7 +62,7 @@ void Telemetry::CheckCrsfBatterySensorDetected()
     }
 }
 
-PAYLOAD_DATA(GPS, BATTERY_SENSOR, ATTITUDE, DEVICE_INFO, FLIGHT_MODE, VARIO, BARO_ALTITUDE);
+PAYLOAD_DATA(GPS, BATTERY_SENSOR, ATTITUDE, PATS, DEVICE_INFO, FLIGHT_MODE, VARIO, BARO_ALTITUDE);
 
 bool Telemetry::GetNextPayload(uint8_t* nextPayloadSize, uint8_t **payloadData)
 {
