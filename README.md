@@ -3,7 +3,7 @@
 Use this repository to flash TX module. Flightcontrollers have SPI receivers; ELRS is included in Betaflight. Current (Oct 25th 2023) modified Betaflight firmware is [v4.4.2](https://github.com/pats-drones/betaflight/tree/pats_4.4.2)
 
 * Modify binding phrase in `user_defines.txt`
-* Easiest way to flash is to install Platformio IDE in VS Code, and use the project tasks for the relevant module, build and upload over UART (USB).
+* Easiest way to flash is to install Platformio IDE in VS Code, and use the project tasks for the relevant module (current: `RadioMaster_Ranger_Nano_2400_TX_via_UART`), build and upload over UART (USB).
 
 ---
 
